@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function ProposalPage({ onYes }) {
   const [yesClicked, setYesClicked] = useState(false);
