@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fdf2f8 0%, #f3e7f5 50%, #e8d5f2 100%);
+  min-height: 100vh;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-heart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes bounce-in {
+  0% { 
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flutter {
+  0%, 100% { 
+    transform: translateX(0) rotate(0deg);
+  }
+  25% { 
+    transform: translateX(-10px) rotate(-5deg);
+  }
+  75% { 
+    transform: translateX(10px) rotate(5deg);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-heart {
+  animation: pulse-heart 1.5s ease-in-out infinite;
+}
+
+.bounce-in {
+  animation: bounce-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+.fade-in {
+  animation: fade-in 0.6s ease-in;
+}
+
+.confetti {
+  position: fixed;
+  pointer-events: none;
+}
+
+.falling {
+  animation: confetti-fall 3s ease-in forwards;
+}
+
+.flutter-heart {
+  animation: flutter 2s ease-in-out infinite;
+}
+
+/* Floating hearts background */
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 32px;
+  background: #ec4899;
+  border-radius: 20px 20px 0 0;
+}
+
+.heart::before {
+  left: 20px;
+  transform: rotate(-45deg);
+  transform-origin: 0 32px;
+}
+
+.heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 20px 32px;
+}
+
+/* Glow effect */
+.glow-button {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-button:hover::before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .heart {
+    width: 15px;
+    height: 15px;
+  }
+
+  .heart::before,
+  .heart::after {
+    width: 15px;
+    height: 24px;
+  }
+}
